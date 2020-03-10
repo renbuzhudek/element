@@ -22,7 +22,7 @@ LoadingConstructor.prototype.originalOverflow = '';
 
 LoadingConstructor.prototype.close = function() {
   if (this.fullscreen) {
-    fullscreenLoading = undefined;
+    fullscreenLoading = undefined;// 关闭弹框时，如果是全屏loading,清除引用
   }
   afterLeave(this, _ => {
     const target = this.fullscreen || this.body
@@ -75,7 +75,7 @@ const Loading = (options = {}) => {
     options.fullscreen = false;
   } else {
     options.body = true;
-  }
+  }  // 如果是全屏loading,并且 fullscreenLoading存在 ，就返回fullscreenLoading  这个逻辑决定了loading服务是单例的
   if (options.fullscreen && fullscreenLoading) {
     return fullscreenLoading;
   }
@@ -97,7 +97,7 @@ const Loading = (options = {}) => {
   Vue.nextTick(() => {
     instance.visible = true;
   });
-  if (options.fullscreen) {
+  if (options.fullscreen) {// 如果是全屏loading,把loading实例对象赋值给 fullscreenLoading 缓存起来
     fullscreenLoading = instance;
   }
   return instance;

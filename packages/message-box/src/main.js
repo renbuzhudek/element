@@ -119,7 +119,12 @@ const showNextMsg = () => {
     }
   }
 };
+/**
+MessageBox为什么能返回一个promise？
+这是一个返回promise的函数，把reject，resolve传递给构造函数的option,内部去处理调用
 
+实测，MessageBox跟loading service一样都是单例的
+ */
 const MessageBox = function(options, callback) {
   if (Vue.prototype.$isServer) return;
   if (typeof options === 'string' || isVNode(options)) {
