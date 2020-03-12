@@ -75,7 +75,7 @@ const Loading = (options = {}) => {
     options.fullscreen = false;
   } else {
     options.body = true;
-  }  // 如果是全屏loading,并且 fullscreenLoading存在 ，就返回fullscreenLoading  这个逻辑决定了loading服务是单例的
+  } // 如果是全屏loading,并且 fullscreenLoading存在 ，就返回fullscreenLoading  这个逻辑决定了loading服务是单例的
   if (options.fullscreen && fullscreenLoading) {
     return fullscreenLoading;
   }
